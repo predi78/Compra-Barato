@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compra Barato - Ofertas y Enlaces Recomendados</title>
+    <title>Compra Barato - Ofertas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-white text-gray-800 font-sans antialiased">
 
-    <!-- Header -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2 cursor-pointer" onclick="filtrarCategoria('todos')">
@@ -21,56 +20,47 @@
                     <p class="text-xs text-gray-400 font-medium">Curaduría de ofertas y enlaces</p>
                 </div>
             </div>
-
-            <!-- Buscador -->
             <div class="w-full md:w-96 relative">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
-                <input type="text" id="buscador" onkeyup="buscarProductos()" placeholder="Buscar electrodomésticos, celulares, hogar..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition">
+                <input type="text" id="buscador" onkeyup="buscarProductos()" placeholder="Buscar..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition">
             </div>
         </div>
-
-        <!-- Categorías -->
         <div class="bg-gray-50 border-t border-gray-100 py-2.5">
             <div class="max-w-7xl mx-auto px-4 flex gap-2 overflow-x-auto no-scrollbar">
                 <button onclick="filtrarCategoria('todos')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-blue-600 text-white shadow-sm transition whitespace-nowrap">🌟 Todos</button>
                 <button onclick="filtrarCategoria('electrodomesticos')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">⚡ Electrodomésticos</button>
                 <button onclick="filtrarCategoria('indumentaria')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">👕 Indumentaria</button>
-                <button onclick="filtrarCategoria('hogar')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">🏠 Casa y Hogar</button>
+                <button onclick="filtrarCategoria('hogar')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">🏠 Hogar</button>
                 <button onclick="filtrarCategoria('celulares')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">📱 Celulares</button>
-                <button onclick="filtrarCategoria('gamer')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">🎮 Sector Gamer</button>
+                <button onclick="filtrarCategoria('gamer')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">🎮 Gamer</button>
             </div>
         </div>
     </header>
 
-    <!-- Aviso -->
     <section class="max-w-7xl mx-auto px-4 mt-6">
         <div class="bg-blue-50 border border-blue-100 p-4 rounded-2xl flex items-center gap-3 text-blue-900 text-xs md:text-sm">
             <i class="fa-solid fa-circle-info text-blue-600 text-lg shrink-0"></i>
-            <p><strong>Aviso importante:</strong> Compra Barato no vende productos directamente. Solo compartimos enlaces hacia tiendas oficiales para que compres con total seguridad.</p>
+            <p><strong>Aviso:</strong> Solo compartimos enlaces a tiendas oficiales para que compres seguro.</p>
         </div>
     </section>
 
-    <!-- Grilla de productos -->
     <main class="max-w-7xl mx-auto px-4 py-8">
-        <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        </div>
+        <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-50 border-t border-gray-200 mt-16 py-8">
         <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-xs">
-            <p>&copy; 2026 Compra Barato. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Compra Barato - Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script>
-        // ========== BASE DE DATOS DE PRODUCTOS ==========
         const productos = [
             {
                 id: 1,
-                nombre: "Buclera Rizador de Pelo Suono Calentamiento Rápido Iónica Negro",
+                nombre: "Buclera Rizador de Pelo Suono Iónica",
                 categoria: "electrodomesticos",
                 imagen: "https://http2.mlstatic.com/D_NQ_NP_724888-MLA48265953942_112021-O.webp",
                 tienda: "Ver en Mercado Libre",
@@ -86,7 +76,7 @@
             },
             {
                 id: 3,
-                nombre: "Combo 1 Juego Sábanas Tango 1 1/2 Plz + 1 Juego Toallas",
+                nombre: "Combo Sábanas 1 1/2 Plz + Toallas",
                 categoria: "hogar",
                 imagen: "https://http2.mlstatic.com/D_NQ_NP_608149-MLA51445980074_092022-O.webp",
                 tienda: "Ver en Mercado Libre",
@@ -94,41 +84,21 @@
             },
             {
                 id: 4,
-                nombre: "Juego Sábanas Smart Home Twin 1 1/2 Plaza 3 Piezas",
+                nombre: "Juego Sábanas Smart Home Twin 1 1/2 Plz",
                 categoria: "hogar",
                 imagen: "https://http2.mlstatic.com/D_NQ_NP_608149-MLA51445980074_092022-O.webp",
                 tienda: "Ver en Mercado Libre",
                 link: "https://articulo.mercadolibre.com.ar/MLA-1269147599-juego-sabanas-smart-home-twin-1-12-plaza-3-piezas-_JM"
-            },
-            // Productos adicionales para que se vea más completo
-            {
-                id: 5,
-                nombre: "Teclado Mecánico Gamer RGB Retroiluminado",
-                categoria: "gamer",
-                imagen: "https://http2.mlstatic.com/D_NQ_NP_2X_790541-MLA54968907779_042023-F.webp",
-                tienda: "Ver en Mercado Libre",
-                link: "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-rgb-retroiluminado/p/MLA18942836"
-            },
-            {
-                id: 6,
-                nombre: "Campera Rompevientos Deportiva Unisex",
-                categoria: "indumentaria",
-                imagen: "https://http2.mlstatic.com/D_NQ_NP_2X_654321-MLA12345678901_012023-F.webp",
-                tienda: "Ver en Mercado Libre",
-                link: "https://www.mercadolibre.com.ar/campera-rompevientos-deportiva-unisex/p/MLA1234567890"
             }
         ];
 
-        // ========== FUNCIONES ==========
         function mostrarProductos(lista) {
             const contenedor = document.getElementById('contenedor-productos');
             contenedor.innerHTML = '';
-
             if (lista.length === 0) {
-                contenedor.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400"><p>No se encontraron productos.</p></div>`;
+                contenedor.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400">No se encontraron productos.</div>`;
                 return;
             }
-
             lista.forEach(p => {
                 contenedor.innerHTML += `
                     <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition flex flex-col overflow-hidden group">
@@ -149,7 +119,6 @@
         }
 
         function filtrarCategoria(cat) {
-            // Cambiar estilo de botones
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
                 btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
@@ -157,25 +126,20 @@
             event.target.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
             event.target.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
 
-            // Filtrar productos
-            if (cat === 'todos') {
-                mostrarProductos(productos);
-            } else {
-                const filtrados = productos.filter(p => p.categoria === cat);
-                mostrarProductos(filtrados);
-            }
+            if (cat === 'todos') mostrarProductos(productos);
+            else mostrarProductos(productos.filter(p => p.categoria === cat));
         }
 
         function buscarProductos() {
             const texto = document.getElementById('buscador').value.toLowerCase();
-            const filtrados = productos.filter(p => 
-                p.nombre.toLowerCase().includes(texto) || 
+            const filtrados = productos.filter(p =>
+                p.nombre.toLowerCase().includes(texto) ||
                 p.categoria.toLowerCase().includes(texto)
             );
             mostrarProductos(filtrados);
         }
 
-        // ========== CARGAR TODOS LOS PRODUCTOS AL INICIAR ==========
+        // Cargar todos los productos al iniciar
         mostrarProductos(productos);
     </script>
 </body>
