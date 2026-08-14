@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Barato - Ofertas y Enlaces Recomendados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-white text-gray-800 font-sans antialiased">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="filtrarCategoria('todos')">
+                <div class="bg-blue-600 text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-tags text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black tracking-tight text-gray-900">Compra<span class="text-blue-600">Barato</span></h1>
+                    <p class="text-xs text-gray-400 font-medium">Curaduría de ofertas y enlaces</p>
+                </div>
+            </div>
+
+            <!-- Buscador -->
+            <div class="w-full md:w-96 relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" id="buscador" onkeyup="buscarProductos()" placeholder="Buscar electrodomésticos, celulares, hogar..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition">
+            </div>
+        </div>
+
+        <!-- Categorías -->
+        <div class="bg-gray-50 border-t border-gray-100 py-2.5">
+            <div class="max-w-7xl mx-auto px-4 flex gap-2 overflow-x-auto no-scrollbar">
+                <button onclick="filtrarCategoria('todos')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-blue-600 text-white shadow-sm transition whitespace-nowrap">🌟 Todos</button>
+                <button onclick="filtrarCategoria('electrodomesticos')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">⚡ Electrodomésticos</button>
+                <button onclick="filtrarCategoria('indumentaria')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">👕 Indumentaria</button>
+                <button onclick="filtrarCategoria('hogar')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">🏠 Casa y Hogar</button>
+                <button onclick="filtrarCategoria('celulares')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">📱 Celulares</button>
+                <button onclick="filtrarCategoria('gamer')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">🎮 Sector Gamer</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Aviso -->
+    <section class="max-w-7xl mx-auto px-4 mt-6">
+        <div class="bg-blue-50 border border-blue-100 p-4 rounded-2xl flex items-center gap-3 text-blue-900 text-xs md:text-sm">
+            <i class="fa-solid fa-circle-info text-blue-600 text-lg shrink-0"></i>
+            <p><strong>Aviso importante:</strong> Compra Barato no vende productos directamente. Solo compartimos enlaces hacia tiendas oficiales para que compres con total seguridad.</p>
+        </div>
+    </section>
+
+    <!-- Grilla -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-xs">
+            <p>&copy; 2026 Compra Barato. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const productos = [
+            {
+                id: 1,
+                nombre: "Buclera Rizador de Pelo Suono Calentamiento Rápido Iónica Negro",
+                categoria: "electrodomesticos",
+                imagen: "https://http2.mlstatic.com/D_NQ_NP_724888-MLA48265953942_112021-O.webp",
+                tienda: "Ver en Mercado Libre",
+                link: "https://www.mercadolibre.com.ar/buclera-rizador-de-pelo-suono-calentamiento-rapido-ionica-color-negro/p/MLA48265953"
+            },
+            {
+                id: 2,
+                nombre: "Samsung Galaxy A07 64GB Negro",
+                categoria: "celulares",
+                imagen: "https://http2.mlstatic.com/D_NQ_NP_668078-MLA79391054366_092024-O.webp",
+                tienda: "Ver en Mercado Libre",
+                link: "https://www.mercadolibre.com.ar/samsung-galaxy-a07-64gb-negro/p/MLA63437715"
+            },
+            {
+                id: 3,
+                nombre: "Combo 1 Juego Sábanas Tango 1 1/2 Plz + 1 Juego Toallas",
+                categoria: "hogar",
+                imagen: "https://http2.mlstatic.com/D_NQ_NP_608149-MLA51445980074_092022-O.webp",
+                tienda: "Ver en Mercado Libre",
+                link: "https://articulo.mercadolibre.com.ar/MLA-1237189473-combo-1-juego-sabanas-tango-1-12-plz-1-juego-toallas-_JM"
+            },
+            {
+                id: 4,
+                nombre: "Juego Sábanas Smart Home Twin 1 1/2 Plaza 3 Piezas",
+                categoria: "hogar",
+                imagen: "https://http2.mlstatic.com/D_NQ_NP_608149-MLA51445980074_092022-O.webp",
+                tienda: "Ver en Mercado Libre",
+                link: "https://articulo.mercadolibre.com.ar/MLA-1269147599-juego-sabanas-smart-home-twin-1-12-plaza-3-piezas-_JM"
+            }
+        ];
+
+        function mostrarProductos(lista) {
+            const contenedor = document.getElementById('contenedor-productos');
+            contenedor.innerHTML = '';
+
+            if (lista.length === 0) {
+                contenedor.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400"><p>No se encontraron productos.</p></div>`;
+                return;
+            }
+
+            lista.forEach(p => {
+                contenedor.innerHTML += `
+                    <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition flex flex-col overflow-hidden group">
+                        <div class="relative bg-gray-50 h-52 overflow-hidden flex items-center justify-center p-4">
+                            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-xs font-semibold px-2.5 py-1 rounded-full shadow-xs text-gray-700 capitalize">${p.categoria}</span>
+                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-105 transition duration-300">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow justify-between">
+                            <h3 class="font-bold text-gray-900 text-base mb-4 line-clamp-3">${p.nombre}</h3>
+                            <a href="${p.link}" target="_blank" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm flex items-center justify-center gap-2">
+                                <span>${p.tienda}</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filtrarCategoria(cat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+            });
+            event.target.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+            event.target.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+
+            if (cat === 'todos') {
+                mostrarProductos(productos);
+            } else {
+                const filtrados = productos.filter(p => p.categoria === cat);
+                mostrarProductos(filtrados);
+            }
+        }
+
+        function buscarProductos() {
+            const texto = document.getElementById('buscador').value.toLowerCase();
+            const filtrados = productos.filter(p => p.nombre.toLowerCase().includes(texto) || p.categoria.toLowerCase().includes(texto));
+            mostrarProductos(filtrados);
+        }
+
+        mostrarProductos(productos);
+    </script>
+</body>
+</html>
