@@ -57,13 +57,13 @@
     </footer>
 
     <script>
-        // ========== PRODUCTOS CON URLs CORRECTAS ==========
+        // ========== PRODUCTOS CON RUTAS RELATIVAS ==========
         const productos = [
             {
                 id: 1,
                 nombre: "Buclera Rizador de Pelo Suono Iónica",
                 categoria: "electrodomesticos",
-                imagen: "https://raw.githubusercontent.com/preid78/Compra-Barato/main/img/buclera.jpg",
+                imagen: "img/buclera.jpg", // Ruta relativa
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/buclera-rizador-de-pelo-suono-calentamiento-rapido-ionica-color-negro/p/MLA48265953"
             },
@@ -71,7 +71,7 @@
                 id: 2,
                 nombre: "Samsung Galaxy A07 64GB Negro",
                 categoria: "celulares",
-                imagen: "https://raw.githubusercontent.com/preid78/Compra-Barato/main/img/samsung%20galaxy%20a07.jpg",
+                imagen: "img/samsung galaxy a07.jpg", // Ruta relativa (con espacios)
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/samsung-galaxy-a07-64gb-negro/p/MLA63437715"
             },
@@ -122,7 +122,7 @@
                     <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition flex flex-col overflow-hidden group">
                         <div class="relative bg-gray-50 h-52 overflow-hidden flex items-center justify-center p-4">
                             <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-xs font-semibold px-2.5 py-1 rounded-full shadow-xs text-gray-700 capitalize">${p.categoria}</span>
-                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-105 transition duration-300">
+                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-105 transition duration-300" onerror="this.src='https://picsum.photos/seed/error/400/300'">
                         </div>
                         <div class="p-5 flex flex-col flex-grow justify-between">
                             <h3 class="font-bold text-gray-900 text-base mb-4 line-clamp-3">${p.nombre}</h3>
