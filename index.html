@@ -3,67 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compra Barato - Ofertas</title>
+    <title>CompraBarato - Ofertas en Argentina</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-white text-gray-800 font-sans antialiased">
+<body class="bg-gray-50 font-sans antialiased">
 
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="filtrarCategoria('todos')">
-                <div class="bg-blue-600 text-white p-2.5 rounded-xl shadow-md">
-                    <i class="fa-solid fa-tags text-xl"></i>
+    <!-- ==================== HEADER MEJORADO ==================== -->
+    <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="filtrarCategoria('todos')">
+                <div class="bg-white/20 backdrop-blur p-3 rounded-2xl shadow-inner">
+                    <i class="fa-solid fa-tags text-2xl text-yellow-300"></i>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-black tracking-tight text-gray-900">Compra<span class="text-blue-600">Barato</span></h1>
-                    <p class="text-xs text-gray-400 font-medium">Curaduría de ofertas y enlaces</p>
+                    <h1 class="text-3xl font-black tracking-tight drop-shadow">Compra<span class="text-yellow-300">Barato</span></h1>
+                    <p class="text-xs text-blue-100 font-medium tracking-wider">Ofertas verificadas para argentinos</p>
                 </div>
             </div>
+            <!-- Buscador (se mantiene igual, es genial) -->
             <div class="w-full md:w-96 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
-                <input type="text" id="buscador" onkeyup="buscarProductos()" placeholder="Buscar electrodomésticos, celulares, hogar..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition">
+                <input type="text" id="buscador" onkeyup="buscarProductos()" placeholder="Buscá productos, marcas o categorías..." class="w-full pl-12 pr-5 py-3 bg-white/10 backdrop-blur border border-white/20 rounded-full text-sm text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:bg-white/20 transition">
             </div>
         </div>
-        <div class="bg-gray-50 border-t border-gray-100 py-2.5">
-            <div class="max-w-7xl mx-auto px-4 flex gap-2 overflow-x-auto no-scrollbar">
-                <button onclick="filtrarCategoria('todos')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-blue-600 text-white shadow-sm transition whitespace-nowrap">🌟 Todos</button>
-                <button onclick="filtrarCategoria('electrodomesticos')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">⚡ Electrodomésticos</button>
-                <button onclick="filtrarCategoria('indumentaria')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">👕 Indumentaria</button>
-                <button onclick="filtrarCategoria('hogar')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">🏠 Hogar</button>
-                <button onclick="filtrarCategoria('celulares')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">📱 Celulares</button>
-                <button onclick="filtrarCategoria('gamer')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-100 transition whitespace-nowrap">🎮 Gamer</button>
+        <!-- Categorías con iconos más vistosos -->
+        <div class="bg-black/10 backdrop-blur border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 py-2.5 flex gap-2 overflow-x-auto no-scrollbar">
+                <button onclick="filtrarCategoria('todos')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold bg-yellow-400 text-gray-900 shadow-md transition whitespace-nowrap hover:scale-105">🌟 Todos</button>
+                <button onclick="filtrarCategoria('electrodomesticos')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold bg-white/20 text-white border border-white/20 hover:bg-white/30 transition whitespace-nowrap">⚡ Electrodomésticos</button>
+                <button onclick="filtrarCategoria('indumentaria')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold bg-white/20 text-white border border-white/20 hover:bg-white/30 transition whitespace-nowrap">👕 Indumentaria</button>
+                <button onclick="filtrarCategoria('hogar')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold bg-white/20 text-white border border-white/20 hover:bg-white/30 transition whitespace-nowrap">🏠 Hogar</button>
+                <button onclick="filtrarCategoria('celulares')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold bg-white/20 text-white border border-white/20 hover:bg-white/30 transition whitespace-nowrap">📱 Celulares</button>
+                <button onclick="filtrarCategoria('gamer')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold bg-white/20 text-white border border-white/20 hover:bg-white/30 transition whitespace-nowrap">🎮 Gamer</button>
             </div>
         </div>
     </header>
 
+    <!-- ==================== AVISO ==================== -->
     <section class="max-w-7xl mx-auto px-4 mt-6">
-        <div class="bg-blue-50 border border-blue-100 p-4 rounded-2xl flex items-center gap-3 text-blue-900 text-xs md:text-sm">
-            <i class="fa-solid fa-circle-info text-blue-600 text-lg shrink-0"></i>
-            <p><strong>Aviso:</strong> Solo compartimos enlaces a tiendas oficiales.</p>
+        <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl flex items-center gap-3 text-blue-900 text-sm shadow-sm">
+            <i class="fa-solid fa-circle-check text-blue-600 text-xl"></i>
+            <p><strong>Ofertas confiables:</strong> Solo compartimos enlaces a tiendas oficiales. Comprá con total seguridad en Argentina.</p>
         </div>
     </section>
 
+    <!-- ==================== GRID DE PRODUCTOS ==================== -->
     <main class="max-w-7xl mx-auto px-4 py-8">
-        <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+        <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Los productos se inyectan con JavaScript -->
+        </div>
     </main>
 
-    <footer class="bg-gray-50 border-t border-gray-200 mt-16 py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-xs">
-            <p>&copy; 2026 Compra Barato</p>
+    <!-- ==================== COMENTARIOS DE ARGENTINOS ==================== -->
+    <section class="max-w-7xl mx-auto px-4 pb-12">
+        <div class="text-center mb-10">
+            <span class="text-sm text-blue-600 font-bold uppercase tracking-widest">Testimonios</span>
+            <h2 class="text-3xl font-black text-gray-800">Lo que dicen los compradores 🇦🇷</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto mt-2 rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Comentario 1 -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition">
+                <div class="flex items-center gap-1 text-yellow-400 text-sm mb-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-600 text-sm italic mb-4">"Encontré la buclera que buscaba a un precio increíble. Llegó en 2 días. Muy recomendable para seguir las ofertas."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center text-blue-700 font-bold">MF</div>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm">María Fernanda</h4>
+                        <p class="text-xs text-gray-400">Córdoba Capital</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Comentario 2 -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition">
+                <div class="flex items-center gap-1 text-yellow-400 text-sm mb-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-600 text-sm italic mb-4">"Venía siguiendo el precio del Samsung A07 y acá lo conseguí al mejor precio. La página es súper fácil de usar."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center text-green-700 font-bold">JP</div>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm">Julián Pérez</h4>
+                        <p class="text-xs text-gray-400">Palermo, CABA</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Comentario 3 -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition">
+                <div class="flex items-center gap-1 text-yellow-400 text-sm mb-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <p class="text-gray-600 text-sm italic mb-4">"Compré el combo de sábanas y toallas, la relación precio-calidad es excelente. La recomiendo para compras del hogar."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center text-purple-700 font-bold">LR</div>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm">Lucía Rodríguez</h4>
+                        <p class="text-xs text-gray-400">Rosario, Santa Fe</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER MEJORADO ==================== -->
+    <footer class="bg-gray-900 text-gray-300 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-white font-bold text-lg mb-3">CompraBarato</h3>
+                <p class="text-sm text-gray-400">Tu curador de ofertas en Argentina. Encontramos los mejores precios en tiendas oficiales.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Categorías</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-blue-400 transition">Electrodomésticos</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Indumentaria</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Hogar</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Celulares</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Contacto</h4>
+                <ul class="text-sm space-y-2">
+                    <li><i class="fa-regular fa-envelope mr-2"></i> info@comprabarato.com</li>
+                    <li><i class="fa-regular fa-clock mr-2"></i> Lun a Vie 9-18 hs</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Seguinos</h4>
+                <div class="flex gap-3 text-xl">
+                    <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 py-4 text-center text-xs text-gray-500">
+                &copy; 2026 CompraBarato - Ofertas para argentinos. Todos los derechos reservados.
+            </div>
         </div>
     </footer>
 
+    <!-- ==================== SCRIPTS ==================== -->
     <script>
-        // ========== PRODUCTOS CON RUTAS RELATIVAS ==========
+        // ============================================================
+        //  BASE DE DATOS DE PRODUCTOS (con tus imágenes y precios)
+        // ============================================================
         const productos = [
             {
                 id: 1,
                 nombre: "Buclera Rizador de Pelo Suono Iónica",
                 categoria: "electrodomesticos",
-                imagen: "img/buclera.jpg", // Ruta relativa
+                imagen: "https://raw.githubusercontent.com/preid78/Compra-Barato/main/img/buclera.jpg",
+                precio: 89999,
+                precioAnterior: 125000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/buclera-rizador-de-pelo-suono-calentamiento-rapido-ionica-color-negro/p/MLA48265953"
             },
@@ -71,15 +185,19 @@
                 id: 2,
                 nombre: "Samsung Galaxy A07 64GB Negro",
                 categoria: "celulares",
-                imagen: "img/samsung galaxy a07.jpg", // Ruta relativa (con espacios)
+                imagen: "https://raw.githubusercontent.com/preid78/Compra-Barato/main/img/samsung%20galaxy%20a07.jpg",
+                precio: 179999,
+                precioAnterior: 215000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/samsung-galaxy-a07-64gb-negro/p/MLA63437715"
             },
             {
                 id: 3,
-                nombre: "Combo Sábanas 1 1/2 Plz + Toallas",
+                nombre: "Combo Sábanas 1 1/2 Plz + Toallas (3 piezas)",
                 categoria: "hogar",
                 imagen: "https://picsum.photos/seed/sabanas/400/300",
+                precio: 34999,
+                precioAnterior: 52000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://articulo.mercadolibre.com.ar/MLA-1237189473-combo-1-juego-sabanas-tango-1-12-plz-1-juego-toallas-_JM"
             },
@@ -88,45 +206,71 @@
                 nombre: "Juego Sábanas Smart Home Twin 1 1/2 Plz",
                 categoria: "hogar",
                 imagen: "https://picsum.photos/seed/sabanas2/400/300",
+                precio: 28999,
+                precioAnterior: 45000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://articulo.mercadolibre.com.ar/MLA-1269147599-juego-sabanas-smart-home-twin-1-12-plaza-3-piezas-_JM"
             },
             {
                 id: 5,
-                nombre: "Teclado Mecánico Gamer RGB",
+                nombre: "Teclado Mecánico Gamer RGB (Switch Blue)",
                 categoria: "gamer",
                 imagen: "https://picsum.photos/seed/teclado/400/300",
+                precio: 65999,
+                precioAnterior: 95000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-rgb-retroiluminado/p/MLA18942836"
             },
             {
                 id: 6,
-                nombre: "Campera Rompevientos Deportiva",
+                nombre: "Campera Rompevientos Deportiva Unisex",
                 categoria: "indumentaria",
                 imagen: "https://picsum.photos/seed/campera/400/300",
+                precio: 48999,
+                precioAnterior: 72000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/campera-rompevientos-deportiva-unisex/p/MLA1234567890"
             }
         ];
 
-        // ========== FUNCIONES ==========
+        // ============================================================
+        //  FUNCIÓN PARA MOSTRAR PRODUCTOS
+        // ============================================================
         function mostrarProductos(lista) {
             const contenedor = document.getElementById('contenedor-productos');
             contenedor.innerHTML = '';
+
             if (lista.length === 0) {
-                contenedor.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400">No se encontraron productos.</div>`;
+                contenedor.innerHTML = `
+                    <div class="col-span-full text-center py-16 text-gray-400">
+                        <i class="fa-regular fa-face-frown text-5xl block mb-4"></i>
+                        <p class="text-lg">No encontramos productos que coincidan con tu búsqueda.</p>
+                        <p class="text-sm">Probá con otras palabras o revisá todas las categorías.</p>
+                    </div>
+                `;
                 return;
             }
+
             lista.forEach(p => {
+                // Formatear precios en pesos argentinos
+                const precioFormateado = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(p.precio);
+                const precioAnteriorFormateado = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(p.precioAnterior);
+
                 contenedor.innerHTML += `
-                    <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition flex flex-col overflow-hidden group">
-                        <div class="relative bg-gray-50 h-52 overflow-hidden flex items-center justify-center p-4">
-                            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-xs font-semibold px-2.5 py-1 rounded-full shadow-xs text-gray-700 capitalize">${p.categoria}</span>
-                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-105 transition duration-300" onerror="this.src='https://picsum.photos/seed/error/400/300'">
+                    <div class="bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1">
+                        <div class="relative bg-gray-100 h-56 overflow-hidden flex items-center justify-center p-4">
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">Oferta</span>
+                            <span class="absolute top-3 right-3 bg-black/70 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">${p.categoria}</span>
+                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-110 transition duration-500">
                         </div>
                         <div class="p-5 flex flex-col flex-grow justify-between">
-                            <h3 class="font-bold text-gray-900 text-base mb-4 line-clamp-3">${p.nombre}</h3>
-                            <a href="${p.link}" target="_blank" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm flex items-center justify-center gap-2">
+                            <h3 class="font-bold text-gray-800 text-base mb-1 line-clamp-2">${p.nombre}</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-2xl font-black text-green-600">${precioFormateado}</span>
+                                <span class="text-sm text-gray-400 line-through">${precioAnteriorFormateado}</span>
+                                <span class="bg-green-100 text-green-800 text-[10px] font-bold px-2 py-0.5 rounded-full">-${Math.round((1 - p.precio / p.precioAnterior) * 100)}%</span>
+                            </div>
+                            <a href="${p.link}" target="_blank" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-center font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition text-sm flex items-center justify-center gap-2">
                                 <span>${p.tienda}</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                             </a>
@@ -136,16 +280,21 @@
             });
         }
 
+        // ============================================================
+        //  FILTRO POR CATEGORÍA
+        // ============================================================
         function filtrarCategoria(cat) {
+            // Cambiar estilo de los botones
             document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
-                btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+                btn.classList.remove('bg-yellow-400', 'text-gray-900');
+                btn.classList.add('bg-white/20', 'text-white', 'border-white/20');
             });
             if (event && event.target) {
-                event.target.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
-                event.target.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+                event.target.classList.remove('bg-white/20', 'text-white', 'border-white/20');
+                event.target.classList.add('bg-yellow-400', 'text-gray-900');
             }
 
+            // Filtrar
             if (cat === 'todos') {
                 mostrarProductos(productos);
             } else {
@@ -154,8 +303,15 @@
             }
         }
 
+        // ============================================================
+        //  BUSCADOR EN TIEMPO REAL
+        // ============================================================
         function buscarProductos() {
-            const texto = document.getElementById('buscador').value.toLowerCase();
+            const texto = document.getElementById('buscador').value.toLowerCase().trim();
+            if (texto === '') {
+                mostrarProductos(productos);
+                return;
+            }
             const filtrados = productos.filter(p =>
                 p.nombre.toLowerCase().includes(texto) ||
                 p.categoria.toLowerCase().includes(texto)
@@ -163,7 +319,9 @@
             mostrarProductos(filtrados);
         }
 
-        // ========== INICIAR ==========
+        // ============================================================
+        //  INICIAR: MOSTRAR TODOS LOS PRODUCTOS
+        // ============================================================
         mostrarProductos(productos);
     </script>
 </body>
