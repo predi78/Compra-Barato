@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CompraBarato - Ofertas en Argentina</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-50 font-sans antialiased">
 
-    <!-- ==================== HEADER ==================== -->
+    <!-- ===== HEADER ===== -->
     <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3 cursor-pointer" onclick="filtrarCategoria('todos')">
@@ -42,7 +40,7 @@
         </div>
     </header>
 
-    <!-- ==================== AVISO ==================== -->
+    <!-- ===== AVISO ===== -->
     <section class="max-w-7xl mx-auto px-4 mt-6">
         <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl flex items-center gap-3 text-blue-900 text-sm shadow-sm">
             <i class="fa-solid fa-circle-check text-blue-600 text-xl"></i>
@@ -50,14 +48,12 @@
         </div>
     </section>
 
-    <!-- ==================== GRID DE PRODUCTOS ==================== -->
+    <!-- ===== PRODUCTOS ===== -->
     <main class="max-w-7xl mx-auto px-4 py-8">
-        <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Los productos se inyectan con JavaScript -->
-        </div>
+        <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
     </main>
 
-    <!-- ==================== COMENTARIOS DE ARGENTINOS ==================== -->
+    <!-- ===== COMENTARIOS ===== -->
     <section class="max-w-7xl mx-auto px-4 pb-12">
         <div class="text-center mb-10">
             <span class="text-sm text-blue-600 font-bold uppercase tracking-widest">Testimonios</span>
@@ -98,7 +94,7 @@
         </div>
     </section>
 
-    <!-- ==================== FOOTER ==================== -->
+    <!-- ===== FOOTER ===== -->
     <footer class="bg-gray-900 text-gray-300 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
@@ -138,17 +134,16 @@
         </div>
     </footer>
 
-    <!-- ==================== SCRIPTS ==================== -->
     <script>
         // ============================================================
-        //  BASE DE DATOS DE PRODUCTOS (con tus imágenes)
+        //  PRODUCTOS (¡CAMBIÁ LAS URLs POR LAS QUE COPIESTE DE "RAW"!)
         // ============================================================
         const productosBase = [
             {
                 id: 1,
                 nombre: "Buclera Rizador de Pelo Suono Iónica",
                 categoria: "electrodomesticos",
-                imagen: "https://raw.githubusercontent.com/preid78/Compra-Barato/main/img/buclera.jpg",
+                imagen: "https://raw.githubusercontent.com/preid78/Compra-Barato/main/img/buclera.jpg",  // ← CAMBIÁ ESTA URL
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/buclera-rizador-de-pelo-suono-calentamiento-rapido-ionica-color-negro/p/MLA48265953"
             },
@@ -156,7 +151,7 @@
                 id: 2,
                 nombre: "Samsung Galaxy A07 64GB Negro",
                 categoria: "celulares",
-                imagen: "https://raw.githubusercontent.com/preid78/Compra-Barato/main/img/samsung%20galaxy%20a07.jpg",
+                imagen: "https://raw.githubusercontent.com/preid78/Compra-Barato/main/img/samsung%20galaxy%20a07.jpg", // ← CAMBIÁ ESTA URL
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/samsung-galaxy-a07-64gb-negro/p/MLA63437715"
             },
@@ -195,45 +190,30 @@
         ];
 
         // ============================================================
-        //  FUNCIÓN PARA ASIGNAR "OFERTA DE LA SEMANA" A TODOS
+        //  ASIGNAR "OFERTA DE LA SEMANA" A TODOS
         // ============================================================
-        function generarProductosConOfertas() {
-            return productosBase.map(p => {
-                return {
-                    ...p,
-                    oferta: "OFERTA DE LA SEMANA"  // ← SIEMPRE FIJO
-                };
-            });
-        }
-
-        let productos = generarProductosConOfertas();
+        const productos = productosBase.map(p => ({ ...p, oferta: "OFERTA DE LA SEMANA" }));
 
         // ============================================================
-        //  FUNCIÓN PARA MOSTRAR PRODUCTOS
+        //  MOSTRAR PRODUCTOS
         // ============================================================
         function mostrarProductos(lista) {
             const contenedor = document.getElementById('contenedor-productos');
             contenedor.innerHTML = '';
-
-            if (lista.length === 0) {
+            if (!lista.length) {
                 contenedor.innerHTML = `
                     <div class="col-span-full text-center py-16 text-gray-400">
                         <i class="fa-regular fa-face-frown text-5xl block mb-4"></i>
                         <p class="text-lg">No encontramos productos que coincidan con tu búsqueda.</p>
-                        <p class="text-sm">Probá con otras palabras o revisá todas las categorías.</p>
                     </div>
                 `;
                 return;
             }
-
             lista.forEach(p => {
                 contenedor.innerHTML += `
                     <div class="bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1">
                         <div class="relative bg-gray-100 h-56 overflow-hidden flex items-center justify-center p-4">
-                            <!-- Etiqueta fija: OFERTA DE LA SEMANA -->
-                            <span class="absolute top-3 left-3 bg-red-600 text-white text-sm font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg z-10">
-                                ${p.oferta}
-                            </span>
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-sm font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg z-10">${p.oferta}</span>
                             <span class="absolute top-3 right-3 bg-black/70 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">${p.categoria}</span>
                             <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-110 transition duration-500">
                         </div>
@@ -250,7 +230,7 @@
         }
 
         // ============================================================
-        //  FILTRO POR CATEGORÍA
+        //  FILTROS Y BUSCADOR
         // ============================================================
         function filtrarCategoria(cat) {
             document.querySelectorAll('.cat-btn').forEach(btn => {
@@ -261,29 +241,14 @@
                 event.target.classList.remove('bg-white/20', 'text-white', 'border-white/20');
                 event.target.classList.add('bg-yellow-400', 'text-gray-900');
             }
-
-            if (cat === 'todos') {
-                mostrarProductos(productos);
-            } else {
-                const filtrados = productos.filter(p => p.categoria === cat);
-                mostrarProductos(filtrados);
-            }
+            if (cat === 'todos') mostrarProductos(productos);
+            else mostrarProductos(productos.filter(p => p.categoria === cat));
         }
 
-        // ============================================================
-        //  BUSCADOR
-        // ============================================================
         function buscarProductos() {
             const texto = document.getElementById('buscador').value.toLowerCase().trim();
-            if (texto === '') {
-                mostrarProductos(productos);
-                return;
-            }
-            const filtrados = productos.filter(p =>
-                p.nombre.toLowerCase().includes(texto) ||
-                p.categoria.toLowerCase().includes(texto)
-            );
-            mostrarProductos(filtrados);
+            if (!texto) { mostrarProductos(productos); return; }
+            mostrarProductos(productos.filter(p => p.nombre.toLowerCase().includes(texto) || p.categoria.toLowerCase().includes(texto)));
         }
 
         // ============================================================
