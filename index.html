@@ -24,7 +24,7 @@
                     <p class="text-xs text-blue-100 font-medium tracking-wider">Ofertas verificadas para argentinos</p>
                 </div>
             </div>
-            <!-- Buscador (se mantiene igual, es genial) -->
+            <!-- Buscador -->
             <div class="w-full md:w-96 relative">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -32,7 +32,7 @@
                 <input type="text" id="buscador" onkeyup="buscarProductos()" placeholder="Buscá productos, marcas o categorías..." class="w-full pl-12 pr-5 py-3 bg-white/10 backdrop-blur border border-white/20 rounded-full text-sm text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:bg-white/20 transition">
             </div>
         </div>
-        <!-- Categorías con iconos más vistosos -->
+        <!-- Categorías -->
         <div class="bg-black/10 backdrop-blur border-t border-white/10">
             <div class="max-w-7xl mx-auto px-4 py-2.5 flex gap-2 overflow-x-auto no-scrollbar">
                 <button onclick="filtrarCategoria('todos')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold bg-yellow-400 text-gray-900 shadow-md transition whitespace-nowrap hover:scale-105">🌟 Todos</button>
@@ -168,16 +168,23 @@
     <!-- ==================== SCRIPTS ==================== -->
     <script>
         // ============================================================
-        //  BASE DE DATOS DE PRODUCTOS (con tus imágenes y precios)
+        //  LISTA DE OFERTAS ALEATORIAS
         // ============================================================
-        const productos = [
+        const ofertas = [
+            "30% OFF", "40% OFF", "50% OFF", "2x1", "Envío gratis",
+            "Oferta flash", "Última unidad", "Rebaja", "Super descuento",
+            "Liquidación", "Solo hoy", "70% OFF", "25% OFF", "Combo"
+        ];
+
+        // ============================================================
+        //  BASE DE DATOS DE PRODUCTOS (sin precios)
+        // ============================================================
+        const productosBase = [
             {
                 id: 1,
                 nombre: "Buclera Rizador de Pelo Suono Iónica",
                 categoria: "electrodomesticos",
                 imagen: "https://raw.githubusercontent.com/preid78/Compra-Barato/main/img/buclera.jpg",
-                precio: 89999,
-                precioAnterior: 125000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/buclera-rizador-de-pelo-suono-calentamiento-rapido-ionica-color-negro/p/MLA48265953"
             },
@@ -186,8 +193,6 @@
                 nombre: "Samsung Galaxy A07 64GB Negro",
                 categoria: "celulares",
                 imagen: "https://raw.githubusercontent.com/preid78/Compra-Barato/main/img/samsung%20galaxy%20a07.jpg",
-                precio: 179999,
-                precioAnterior: 215000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/samsung-galaxy-a07-64gb-negro/p/MLA63437715"
             },
@@ -196,8 +201,6 @@
                 nombre: "Combo Sábanas 1 1/2 Plz + Toallas (3 piezas)",
                 categoria: "hogar",
                 imagen: "https://picsum.photos/seed/sabanas/400/300",
-                precio: 34999,
-                precioAnterior: 52000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://articulo.mercadolibre.com.ar/MLA-1237189473-combo-1-juego-sabanas-tango-1-12-plz-1-juego-toallas-_JM"
             },
@@ -206,8 +209,6 @@
                 nombre: "Juego Sábanas Smart Home Twin 1 1/2 Plz",
                 categoria: "hogar",
                 imagen: "https://picsum.photos/seed/sabanas2/400/300",
-                precio: 28999,
-                precioAnterior: 45000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://articulo.mercadolibre.com.ar/MLA-1269147599-juego-sabanas-smart-home-twin-1-12-plaza-3-piezas-_JM"
             },
@@ -216,8 +217,6 @@
                 nombre: "Teclado Mecánico Gamer RGB (Switch Blue)",
                 categoria: "gamer",
                 imagen: "https://picsum.photos/seed/teclado/400/300",
-                precio: 65999,
-                precioAnterior: 95000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-rgb-retroiluminado/p/MLA18942836"
             },
@@ -226,12 +225,27 @@
                 nombre: "Campera Rompevientos Deportiva Unisex",
                 categoria: "indumentaria",
                 imagen: "https://picsum.photos/seed/campera/400/300",
-                precio: 48999,
-                precioAnterior: 72000,
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/campera-rompevientos-deportiva-unisex/p/MLA1234567890"
             }
         ];
+
+        // ============================================================
+        //  FUNCIÓN PARA ASIGNAR OFERTA ALEATORIA A CADA PRODUCTO
+        // ============================================================
+        function generarProductosConOfertas() {
+            return productosBase.map(p => {
+                // Elige una oferta aleatoria
+                const ofertaAleatoria = ofertas[Math.floor(Math.random() * ofertas.length)];
+                return {
+                    ...p,
+                    oferta: ofertaAleatoria
+                };
+            });
+        }
+
+        // Variable global con los productos ya con ofertas
+        let productos = generarProductosConOfertas();
 
         // ============================================================
         //  FUNCIÓN PARA MOSTRAR PRODUCTOS
@@ -252,24 +266,22 @@
             }
 
             lista.forEach(p => {
-                // Formatear precios en pesos argentinos
-                const precioFormateado = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(p.precio);
-                const precioAnteriorFormateado = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(p.precioAnterior);
+                // Colores aleatorios para las etiquetas de oferta
+                const colores = ['bg-red-600', 'bg-orange-500', 'bg-green-600', 'bg-purple-600', 'bg-pink-600', 'bg-amber-500'];
+                const colorRandom = colores[Math.floor(Math.random() * colores.length)];
 
                 contenedor.innerHTML += `
                     <div class="bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1">
                         <div class="relative bg-gray-100 h-56 overflow-hidden flex items-center justify-center p-4">
-                            <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">Oferta</span>
+                            <!-- Etiqueta de oferta aleatoria -->
+                            <span class="absolute top-3 left-3 ${colorRandom} text-white text-sm font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg z-10">
+                                ${p.oferta}
+                            </span>
                             <span class="absolute top-3 right-3 bg-black/70 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">${p.categoria}</span>
                             <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-110 transition duration-500">
                         </div>
                         <div class="p-5 flex flex-col flex-grow justify-between">
-                            <h3 class="font-bold text-gray-800 text-base mb-1 line-clamp-2">${p.nombre}</h3>
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="text-2xl font-black text-green-600">${precioFormateado}</span>
-                                <span class="text-sm text-gray-400 line-through">${precioAnteriorFormateado}</span>
-                                <span class="bg-green-100 text-green-800 text-[10px] font-bold px-2 py-0.5 rounded-full">-${Math.round((1 - p.precio / p.precioAnterior) * 100)}%</span>
-                            </div>
+                            <h3 class="font-bold text-gray-800 text-base mb-3 line-clamp-2">${p.nombre}</h3>
                             <a href="${p.link}" target="_blank" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-center font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition text-sm flex items-center justify-center gap-2">
                                 <span>${p.tienda}</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
@@ -320,7 +332,7 @@
         }
 
         // ============================================================
-        //  INICIAR: MOSTRAR TODOS LOS PRODUCTOS
+        //  INICIAR: MOSTRAR TODOS LOS PRODUCTOS CON OFERTAS
         // ============================================================
         mostrarProductos(productos);
     </script>
