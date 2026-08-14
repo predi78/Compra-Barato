@@ -22,6 +22,30 @@
             </div>
             <div class="w-full md:w-96 relative">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass"></i><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Barato - Ofertas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-white text-gray-800 font-sans antialiased">
+
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="filtrarCategoria('todos')">
+                <div class="bg-blue-600 text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-tags text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black tracking-tight text-gray-900">Compra<span class="text-blue-600">Barato</span></h1>
+                    <p class="text-xs text-gray-400 font-medium">Curaduría de ofertas y enlaces</p>
+                </div>
+            </div>
+            <div class="w-full md:w-96 relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
                 <input type="text" id="buscador" onkeyup="buscarProductos()" placeholder="Buscar..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition">
@@ -62,7 +86,7 @@
                 id: 1,
                 nombre: "Buclera Rizador de Pelo Suono Iónica",
                 categoria: "electrodomesticos",
-                imagen: "https://http2.mlstatic.com/D_NQ_NP_724888-MLA48265953942_112021-O.webp",
+                imagen: "TU_URL_BUCLERA",   // <--- REEMPLAZA POR LA URL RAW DE TU BUBLERA
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/buclera-rizador-de-pelo-suono-calentamiento-rapido-ionica-color-negro/p/MLA48265953"
             },
@@ -70,7 +94,7 @@
                 id: 2,
                 nombre: "Samsung Galaxy A07 64GB Negro",
                 categoria: "celulares",
-                imagen: "https://http2.mlstatic.com/D_NQ_NP_668078-MLA79319504366_092024-O.webp",
+                imagen: "TU_URL_CELULAR",   // <--- REEMPLAZA POR LA URL RAW DE TU CELULAR
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/samsung-galaxy-a07-64gb-negro/p/MLA63437715"
             },
@@ -139,7 +163,6 @@
             mostrarProductos(filtrados);
         }
 
-        // Cargar todos los productos al iniciar
         mostrarProductos(productos);
     </script>
 </body>
