@@ -1,32 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compra Barato - Ofertas</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-white text-gray-800 font-sans antialiased">
-
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="filtrarCategoria('todos')">
-                <div class="bg-blue-600 text-white p-2.5 rounded-xl shadow-md">
-                    <i class="fa-solid fa-tags text-xl"></i>
-                </div>
-                <div>
-                    <h1 class="text-2xl font-black tracking-tight text-gray-900">Compra<span class="text-blue-600">Barato</span></h1>
-                    <p class="text-xs text-gray-400 font-medium">Curaduría de ofertas y enlaces</p>
-                </div>
-            </div>
-            <div class="w-full md:w-96 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400">
-                    <i class="fa-solid fa-magnifying-glass"></i><!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Compra Barato - Ofertas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -86,7 +62,7 @@
                 id: 1,
                 nombre: "Buclera Rizador de Pelo Suono Iónica",
                 categoria: "electrodomesticos",
-                imagen: "TU_URL_BUCLERA",   // <--- REEMPLAZA POR LA URL RAW DE TU BUBLERA
+                imagen: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=300&fit=crop",
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/buclera-rizador-de-pelo-suono-calentamiento-rapido-ionica-color-negro/p/MLA48265953"
             },
@@ -94,7 +70,7 @@
                 id: 2,
                 nombre: "Samsung Galaxy A07 64GB Negro",
                 categoria: "celulares",
-                imagen: "TU_URL_CELULAR",   // <--- REEMPLAZA POR LA URL RAW DE TU CELULAR
+                imagen: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/samsung-galaxy-a07-64gb-negro/p/MLA63437715"
             },
@@ -102,7 +78,7 @@
                 id: 3,
                 nombre: "Combo Sábanas 1 1/2 Plz + Toallas",
                 categoria: "hogar",
-                imagen: "https://http2.mlstatic.com/D_NQ_NP_608149-MLA51445980074_092022-O.webp",
+                imagen: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e6?w=400&h=300&fit=crop",
                 tienda: "Ver en Mercado Libre",
                 link: "https://articulo.mercadolibre.com.ar/MLA-1237189473-combo-1-juego-sabanas-tango-1-12-plz-1-juego-toallas-_JM"
             },
@@ -110,7 +86,7 @@
                 id: 4,
                 nombre: "Juego Sábanas Smart Home Twin 1 1/2 Plz",
                 categoria: "hogar",
-                imagen: "https://http2.mlstatic.com/D_NQ_NP_608149-MLA51445980074_092022-O.webp",
+                imagen: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e6?w=400&h=300&fit=crop&random=1",
                 tienda: "Ver en Mercado Libre",
                 link: "https://articulo.mercadolibre.com.ar/MLA-1269147599-juego-sabanas-smart-home-twin-1-12-plaza-3-piezas-_JM"
             }
@@ -128,7 +104,7 @@
                     <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition flex flex-col overflow-hidden group">
                         <div class="relative bg-gray-50 h-52 overflow-hidden flex items-center justify-center p-4">
                             <span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-xs font-semibold px-2.5 py-1 rounded-full shadow-xs text-gray-700 capitalize">${p.categoria}</span>
-                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-105 transition duration-300">
+                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-105 transition duration-300" loading="lazy">
                         </div>
                         <div class="p-5 flex flex-col flex-grow justify-between">
                             <h3 class="font-bold text-gray-900 text-base mb-4 line-clamp-3">${p.nombre}</h3>
