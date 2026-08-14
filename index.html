@@ -52,7 +52,7 @@
         </div>
     </section>
 
-    <!-- Grilla -->
+    <!-- Grilla de productos -->
     <main class="max-w-7xl mx-auto px-4 py-8">
         <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         </div>
@@ -66,6 +66,7 @@
     </footer>
 
     <script>
+        // ========== BASE DE DATOS DE PRODUCTOS ==========
         const productos = [
             {
                 id: 1,
@@ -79,7 +80,7 @@
                 id: 2,
                 nombre: "Samsung Galaxy A07 64GB Negro",
                 categoria: "celulares",
-                imagen: "https://http2.mlstatic.com/D_NQ_NP_668078-MLA79391054366_092024-O.webp",
+                imagen: "https://http2.mlstatic.com/D_NQ_NP_668078-MLA79319504366_092024-O.webp",
                 tienda: "Ver en Mercado Libre",
                 link: "https://www.mercadolibre.com.ar/samsung-galaxy-a07-64gb-negro/p/MLA63437715"
             },
@@ -98,9 +99,27 @@
                 imagen: "https://http2.mlstatic.com/D_NQ_NP_608149-MLA51445980074_092022-O.webp",
                 tienda: "Ver en Mercado Libre",
                 link: "https://articulo.mercadolibre.com.ar/MLA-1269147599-juego-sabanas-smart-home-twin-1-12-plaza-3-piezas-_JM"
+            },
+            // Productos adicionales para que se vea más completo
+            {
+                id: 5,
+                nombre: "Teclado Mecánico Gamer RGB Retroiluminado",
+                categoria: "gamer",
+                imagen: "https://http2.mlstatic.com/D_NQ_NP_2X_790541-MLA54968907779_042023-F.webp",
+                tienda: "Ver en Mercado Libre",
+                link: "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-rgb-retroiluminado/p/MLA18942836"
+            },
+            {
+                id: 6,
+                nombre: "Campera Rompevientos Deportiva Unisex",
+                categoria: "indumentaria",
+                imagen: "https://http2.mlstatic.com/D_NQ_NP_2X_654321-MLA12345678901_012023-F.webp",
+                tienda: "Ver en Mercado Libre",
+                link: "https://www.mercadolibre.com.ar/campera-rompevientos-deportiva-unisex/p/MLA1234567890"
             }
         ];
 
+        // ========== FUNCIONES ==========
         function mostrarProductos(lista) {
             const contenedor = document.getElementById('contenedor-productos');
             contenedor.innerHTML = '';
@@ -130,6 +149,7 @@
         }
 
         function filtrarCategoria(cat) {
+            // Cambiar estilo de botones
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
                 btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
@@ -137,6 +157,7 @@
             event.target.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
             event.target.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
 
+            // Filtrar productos
             if (cat === 'todos') {
                 mostrarProductos(productos);
             } else {
@@ -147,10 +168,14 @@
 
         function buscarProductos() {
             const texto = document.getElementById('buscador').value.toLowerCase();
-            const filtrados = productos.filter(p => p.nombre.toLowerCase().includes(texto) || p.categoria.toLowerCase().includes(texto));
+            const filtrados = productos.filter(p => 
+                p.nombre.toLowerCase().includes(texto) || 
+                p.categoria.toLowerCase().includes(texto)
+            );
             mostrarProductos(filtrados);
         }
 
+        // ========== CARGAR TODOS LOS PRODUCTOS AL INICIAR ==========
         mostrarProductos(productos);
     </script>
 </body>
