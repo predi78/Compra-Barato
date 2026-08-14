@@ -11,10 +11,9 @@
 </head>
 <body class="bg-gray-50 font-sans antialiased">
 
-    <!-- ==================== HEADER MEJORADO ==================== -->
+    <!-- ==================== HEADER ==================== -->
     <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <!-- Logo -->
             <div class="flex items-center gap-3 cursor-pointer" onclick="filtrarCategoria('todos')">
                 <div class="bg-white/20 backdrop-blur p-3 rounded-2xl shadow-inner">
                     <i class="fa-solid fa-tags text-2xl text-yellow-300"></i>
@@ -24,7 +23,6 @@
                     <p class="text-xs text-blue-100 font-medium tracking-wider">Ofertas verificadas para argentinos</p>
                 </div>
             </div>
-            <!-- Buscador -->
             <div class="w-full md:w-96 relative">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -32,7 +30,6 @@
                 <input type="text" id="buscador" onkeyup="buscarProductos()" placeholder="Buscá productos, marcas o categorías..." class="w-full pl-12 pr-5 py-3 bg-white/10 backdrop-blur border border-white/20 rounded-full text-sm text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:bg-white/20 transition">
             </div>
         </div>
-        <!-- Categorías -->
         <div class="bg-black/10 backdrop-blur border-t border-white/10">
             <div class="max-w-7xl mx-auto px-4 py-2.5 flex gap-2 overflow-x-auto no-scrollbar">
                 <button onclick="filtrarCategoria('todos')" class="cat-btn px-5 py-2 rounded-full text-xs font-bold bg-yellow-400 text-gray-900 shadow-md transition whitespace-nowrap hover:scale-105">🌟 Todos</button>
@@ -68,64 +65,40 @@
             <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto mt-2 rounded-full"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Comentario 1 -->
             <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition">
                 <div class="flex items-center gap-1 text-yellow-400 text-sm mb-2">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p class="text-gray-600 text-sm italic mb-4">"Encontré la buclera que buscaba a un precio increíble. Llegó en 2 días. Muy recomendable para seguir las ofertas."</p>
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center text-blue-700 font-bold">MF</div>
-                    <div>
-                        <h4 class="font-bold text-gray-800 text-sm">María Fernanda</h4>
-                        <p class="text-xs text-gray-400">Córdoba Capital</p>
-                    </div>
+                    <div><h4 class="font-bold text-gray-800 text-sm">María Fernanda</h4><p class="text-xs text-gray-400">Córdoba Capital</p></div>
                 </div>
             </div>
-            <!-- Comentario 2 -->
             <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition">
                 <div class="flex items-center gap-1 text-yellow-400 text-sm mb-2">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p class="text-gray-600 text-sm italic mb-4">"Venía siguiendo el precio del Samsung A07 y acá lo conseguí al mejor precio. La página es súper fácil de usar."</p>
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center text-green-700 font-bold">JP</div>
-                    <div>
-                        <h4 class="font-bold text-gray-800 text-sm">Julián Pérez</h4>
-                        <p class="text-xs text-gray-400">Palermo, CABA</p>
-                    </div>
+                    <div><h4 class="font-bold text-gray-800 text-sm">Julián Pérez</h4><p class="text-xs text-gray-400">Palermo, CABA</p></div>
                 </div>
             </div>
-            <!-- Comentario 3 -->
             <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition">
                 <div class="flex items-center gap-1 text-yellow-400 text-sm mb-2">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
                 </div>
                 <p class="text-gray-600 text-sm italic mb-4">"Compré el combo de sábanas y toallas, la relación precio-calidad es excelente. La recomiendo para compras del hogar."</p>
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center text-purple-700 font-bold">LR</div>
-                    <div>
-                        <h4 class="font-bold text-gray-800 text-sm">Lucía Rodríguez</h4>
-                        <p class="text-xs text-gray-400">Rosario, Santa Fe</p>
-                    </div>
+                    <div><h4 class="font-bold text-gray-800 text-sm">Lucía Rodríguez</h4><p class="text-xs text-gray-400">Rosario, Santa Fe</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== FOOTER MEJORADO ==================== -->
+    <!-- ==================== FOOTER ==================== -->
     <footer class="bg-gray-900 text-gray-300 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
@@ -168,8 +141,7 @@
     <!-- ==================== SCRIPTS ==================== -->
     <script>
         // ============================================================
-        //  PRODUCTOS CON SUS IMÁGENES (URLs RAW)
-        //  ¡Verificá que estas URLs sean correctas!
+        //  BASE DE DATOS DE PRODUCTOS (con tus imágenes)
         // ============================================================
         const productosBase = [
             {
@@ -225,17 +197,16 @@
         // ============================================================
         //  FUNCIÓN PARA ASIGNAR "OFERTA DE LA SEMANA" A TODOS
         // ============================================================
-        function generarProductosConOfertaFija() {
+        function generarProductosConOfertas() {
             return productosBase.map(p => {
                 return {
                     ...p,
-                    oferta: "🔥 Oferta de la semana"
+                    oferta: "OFERTA DE LA SEMANA"  // ← SIEMPRE FIJO
                 };
             });
         }
 
-        // Variable global con los productos
-        let productos = generarProductosConOfertaFija();
+        let productos = generarProductosConOfertas();
 
         // ============================================================
         //  FUNCIÓN PARA MOSTRAR PRODUCTOS
@@ -259,12 +230,12 @@
                 contenedor.innerHTML += `
                     <div class="bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1">
                         <div class="relative bg-gray-100 h-56 overflow-hidden flex items-center justify-center p-4">
-                            <!-- Etiqueta fija: Oferta de la semana -->
-                            <span class="absolute top-3 left-3 bg-gradient-to-r from-red-600 to-orange-500 text-white text-sm font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg z-10">
+                            <!-- Etiqueta fija: OFERTA DE LA SEMANA -->
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-sm font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg z-10">
                                 ${p.oferta}
                             </span>
                             <span class="absolute top-3 right-3 bg-black/70 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">${p.categoria}</span>
-                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-110 transition duration-500" onerror="this.src='https://picsum.photos/seed/error/400/300'">
+                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-110 transition duration-500">
                         </div>
                         <div class="p-5 flex flex-col flex-grow justify-between">
                             <h3 class="font-bold text-gray-800 text-base mb-3 line-clamp-2">${p.nombre}</h3>
@@ -300,7 +271,7 @@
         }
 
         // ============================================================
-        //  BUSCADOR EN TIEMPO REAL
+        //  BUSCADOR
         // ============================================================
         function buscarProductos() {
             const texto = document.getElementById('buscador').value.toLowerCase().trim();
@@ -316,7 +287,7 @@
         }
 
         // ============================================================
-        //  INICIAR: MOSTRAR TODOS LOS PRODUCTOS
+        //  INICIAR
         // ============================================================
         mostrarProductos(productos);
     </script>
