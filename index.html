@@ -168,16 +168,8 @@
     <!-- ==================== SCRIPTS ==================== -->
     <script>
         // ============================================================
-        //  LISTA DE OFERTAS ALEATORIAS
-        // ============================================================
-        const ofertas = [
-            "30% OFF", "40% OFF", "50% OFF", "2x1", "Envío gratis",
-            "Oferta flash", "Última unidad", "Rebaja", "Super descuento",
-            "Liquidación", "Solo hoy", "70% OFF", "25% OFF", "Combo"
-        ];
-
-        // ============================================================
-        //  BASE DE DATOS DE PRODUCTOS (sin precios)
+        //  PRODUCTOS CON SUS IMÁGENES (URLs RAW)
+        //  ¡Verificá que estas URLs sean correctas!
         // ============================================================
         const productosBase = [
             {
@@ -231,21 +223,19 @@
         ];
 
         // ============================================================
-        //  FUNCIÓN PARA ASIGNAR OFERTA ALEATORIA A CADA PRODUCTO
+        //  FUNCIÓN PARA ASIGNAR "OFERTA DE LA SEMANA" A TODOS
         // ============================================================
-        function generarProductosConOfertas() {
+        function generarProductosConOfertaFija() {
             return productosBase.map(p => {
-                // Elige una oferta aleatoria
-                const ofertaAleatoria = ofertas[Math.floor(Math.random() * ofertas.length)];
                 return {
                     ...p,
-                    oferta: ofertaAleatoria
+                    oferta: "🔥 Oferta de la semana"
                 };
             });
         }
 
-        // Variable global con los productos ya con ofertas
-        let productos = generarProductosConOfertas();
+        // Variable global con los productos
+        let productos = generarProductosConOfertaFija();
 
         // ============================================================
         //  FUNCIÓN PARA MOSTRAR PRODUCTOS
@@ -266,19 +256,15 @@
             }
 
             lista.forEach(p => {
-                // Colores aleatorios para las etiquetas de oferta
-                const colores = ['bg-red-600', 'bg-orange-500', 'bg-green-600', 'bg-purple-600', 'bg-pink-600', 'bg-amber-500'];
-                const colorRandom = colores[Math.floor(Math.random() * colores.length)];
-
                 contenedor.innerHTML += `
                     <div class="bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1">
                         <div class="relative bg-gray-100 h-56 overflow-hidden flex items-center justify-center p-4">
-                            <!-- Etiqueta de oferta aleatoria -->
-                            <span class="absolute top-3 left-3 ${colorRandom} text-white text-sm font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg z-10">
+                            <!-- Etiqueta fija: Oferta de la semana -->
+                            <span class="absolute top-3 left-3 bg-gradient-to-r from-red-600 to-orange-500 text-white text-sm font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg z-10">
                                 ${p.oferta}
                             </span>
                             <span class="absolute top-3 right-3 bg-black/70 backdrop-blur text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">${p.categoria}</span>
-                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-110 transition duration-500">
+                            <img src="${p.imagen}" alt="${p.nombre}" class="object-contain h-full w-full group-hover:scale-110 transition duration-500" onerror="this.src='https://picsum.photos/seed/error/400/300'">
                         </div>
                         <div class="p-5 flex flex-col flex-grow justify-between">
                             <h3 class="font-bold text-gray-800 text-base mb-3 line-clamp-2">${p.nombre}</h3>
@@ -296,7 +282,6 @@
         //  FILTRO POR CATEGORÍA
         // ============================================================
         function filtrarCategoria(cat) {
-            // Cambiar estilo de los botones
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.classList.remove('bg-yellow-400', 'text-gray-900');
                 btn.classList.add('bg-white/20', 'text-white', 'border-white/20');
@@ -306,7 +291,6 @@
                 event.target.classList.add('bg-yellow-400', 'text-gray-900');
             }
 
-            // Filtrar
             if (cat === 'todos') {
                 mostrarProductos(productos);
             } else {
@@ -332,7 +316,7 @@
         }
 
         // ============================================================
-        //  INICIAR: MOSTRAR TODOS LOS PRODUCTOS CON OFERTAS
+        //  INICIAR: MOSTRAR TODOS LOS PRODUCTOS
         // ============================================================
         mostrarProductos(productos);
     </script>
